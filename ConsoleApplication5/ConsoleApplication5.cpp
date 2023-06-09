@@ -1,6 +1,7 @@
-﻿#include <iostream>
+#include <iostream>
 #include <Windows.h>
 #include <cmath>
+
 using namespace std;
 bool IsCorrect(int begin, int end);
 int NumToDigit(int n);
@@ -21,7 +22,13 @@ int main()
 	}
 	cout << "Введите ваше число: \n";
 	cin >> num;
-	cout << "Итоговая цифра ввелённого числа: ";
+	if (!cin)
+		{
+			cout << "Error!\n";
+			system("Pause");
+			return 0;
+		}
+	cout << "Итоговая цифра введённого числа: ";
 	Result = NumToDigit(num);
 	cout << Result;
 	cout << "\n";
@@ -33,7 +40,7 @@ int main()
 	cout << endl << "Числа из интервала, у которых такая же итоговая цифра" << endl;
 	for (i = 0; i < size ; i++) {
 		ResultArray = NumToDigit(*(Array + i));
-		if (Result = ResultArray) {
+		if (Result == ResultArray) {
 			cout << " " << *(Array + i) << "(" << ResultArray <<")" << " ";
 	}
 	}
@@ -57,7 +64,7 @@ int NumToDigit(int n)
 			Sum += n % 10;
 			n /= 10;
 		};
-	for (n = Sum; Sum > 9;    ) {
+	for (n = Sum; Sum > 9;) {
 		Sum = 0;
 		while (n != 0) {
 			Sum += n % 10;
